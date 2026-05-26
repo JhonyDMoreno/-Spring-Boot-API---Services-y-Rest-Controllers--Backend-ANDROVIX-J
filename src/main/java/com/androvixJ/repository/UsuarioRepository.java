@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>
 {
-    // Heredando de JpaRepository ya tienes: save(), findById(), findAll(), deleteById()
+    //Heredando de JpaRepository save(), findById(), findAll(), deleteById()
 }

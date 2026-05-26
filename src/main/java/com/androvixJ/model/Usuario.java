@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuarios")
-@Data //Lombok: Crea los Getters, Setters y toString en silencio para no llenar esto de texto
+@Data //Lombok: Crea los Getters, Setters y toString
 @NoArgsConstructor //Constructor vacío obligatorio para que JPA funcione
 @AllArgsConstructor //Constructor con todos los campos
 public class Usuario
