@@ -10,5 +10,4 @@ public class AndrovixJApplication
     {
 		SpringApplication.run(AndrovixJApplication.class, args);
 	}
-
 }
