@@ -1,10 +1,10 @@
 package com.androvixJ.model;
 
+import com.androvixJ.enums.EstadoPedido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,15 +27,15 @@ public class Pedidos
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
 
+    //El estado del pedido ahora es controlado por Enum
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
-    private String estado;
+    private EstadoPedido estado;
 
-    //RELACIÓN: Muchos pedidos (M) corresponden a un solo Usuario (1)
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    //Un pedido tiene muchos registros en la tabla intermedia (cantidad y precio)
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductoPedido> detalles;
 

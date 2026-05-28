@@ -1,5 +1,6 @@
 package com.androvixJ.model;
 
+import com.androvixJ.enums.RolNombre;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,9 +9,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuarios")
-@Data //Lombok: Crea los Getters, Setters y toString
-@NoArgsConstructor //Constructor vacío obligatorio para que JPA funcione
-@AllArgsConstructor //Constructor con todos los campos
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario
 {
     @Id
@@ -30,13 +31,14 @@ public class Usuario
     @Column(nullable = false, length = 255)
     private String password;
 
+    //Ahora el rol es un Enum estricto
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
-    private String rol;
+    private RolNombre rol;
 
-    @Column(name = "fecha_registro", updatable = false)
+    @Column(name = "fecha_registro", nullable = false)
     private LocalDateTime fechaRegistro;
 
-    //Creando la fecha y hora exacta en tu Postgres cuando se registre un usuario nuevo
     @PrePersist
     protected void onCreate()
     {
